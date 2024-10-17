@@ -4,7 +4,7 @@ Flight::route('/', function () {
     renderWithLayout('index', ['title' => 'Inicio']);
 });
 
-Flight::route('/login/', function () {
+Flight::route('/auth/', function () {
     if (isset($_SESSION['user'])) {
         Flight::redirect('/casagro_new');
     }

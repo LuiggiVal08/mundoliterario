@@ -10,7 +10,7 @@ class User extends Model
     protected $table = 'users';
     public $incrementing = false; // Utilizar UUID en lugar de auto-incremento
     protected $keyType = 'string';
-    protected $fillable = ['id', 'name', 'lastname', 'dni', 'password', 'rol_id'];
+    protected $fillable = ['id', 'name', 'lastname', 'username', 'password', 'role_id'];
 
     // Crear un UUID al crear el modelo
     protected static function boot()

@@ -6,7 +6,6 @@ $capsule = new Capsule;
 
 $capsule->schema()->create('roles', function ($table) {
     $table->increments('id');
-    $table->string('name');
-    $table->text('description')->nullable();
+    $table->string('name')->notNullable();
     $table->timestamps();
 });

@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/images/logos3.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/Mountain.png" type="image/x-icon">
     <link rel="stylesheet" href="<?php echo $_ENV['PATH_BASE'] ?>/css/index.css">
     <link rel="stylesheet" href="<?php echo $_ENV['PATH_BASE'] ?>/css/style.css">
     <link rel="stylesheet" href="<?php echo $_ENV['PATH_BASE'] ?>/css/tailwind.css">
@@ -16,10 +16,11 @@
 </head>
 
 <body>
+    <div id="portal"></div>
     <div id="root" class="relative">
         <?= $header ?>
 
-        <main class="bg-secondary bg-[linear-gradient(to_right,#00000040,#00595440),linear-gradient(93deg,#00595440,#00595440),url(/images/fondo.png)] bg-no-repeat bg-fixed bg-center bg-cover ">
+        <main class="bg-secondary bg-[url(/images/Mountain.png)] bg-no-repeat bg-fixed bg-center bg-cover ">
 
             <div class="w-full h-full  ">
 
@@ -28,7 +29,7 @@
 
         </main>
 
-        <?= $footer ?>
+        <!-- <?= $footer ?> -->
 
         <!-- Enlaza con el archivo JS principal -->
     </div>

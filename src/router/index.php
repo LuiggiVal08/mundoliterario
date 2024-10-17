@@ -4,18 +4,13 @@ require 'src/middlewares/AuthMiddleware.php';
 use Illuminate\Support\Str;
 
 Flight::group('/api', function () {
-
     Flight::route('GET /', function () {
         Flight::json(['response' => Str::uuid()]);
     });
-    function handleResponse(array $data)
-    {
-        if (isset($data['error']) && $data['error']) {
-            Flight::halt($data['status'], json_encode($data));
-        }
-
-        Flight::json($data, $data['status']);
-    }
+    Flight::route('POST /', function () {
+        $data = Flight::request()->data->getData();
+        Flight::json(['data' => $data, 'error' => null, 'status' => '200']);
+    });
     // Ruta al directorio donde se encuentran los controladores
     $directory = __DIR__;
 

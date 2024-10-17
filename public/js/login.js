@@ -1,43 +1,48 @@
 import { regExp } from "./helpers/Format";
+import { Format } from "./helpers/Format";
+import httpRequest from './helpers/httpRequest';
+import showToast from './helpers/Toast';
+import { validForm } from './helpers/validForm';
 
-const validForm = (elements) => {
-    const formData = {};
-    let isValid = true;
-
-    Array.from(elements).forEach(element => {
-        if (element.type === 'submit' || element.type === 'button') {
-            return;
-        }
-
-        const name = element.name;
-        const regex = element.getAttribute('data-regex') ? new RegExp(element.getAttribute('data-regex')) : regExp[name];
-        element.classList.remove('errorInput')
-        if (regex) {
-            if (!regex.test(element.value)) {
-                isValid = false;
-                element.classList.add('errorInput')
-                console.error(`El campo ${name} no es válido.`);
-            }
-        } else {
-            if (!element.value) {
-                isValid = false;
-                element.classList.add('errorInput')
-                console.error(`El campo ${name} no debe estar vacío.`);
-            }
-        }
-
-        formData[name] = element.value;
-    });
-
-    return { isValid, formData };
-}
-
-
-export const submitLogin = (e) => {
+export const submitForm = async (e, url) => {
+    // console.log(url);
     e.preventDefault();
     const form = e.target;
-    const { isValid, formData } = validForm(form.elements)
+    const { isValid, formData } = validForm(form.elements);
     if (isValid) {
-        console.log(formData)
+        console.log(formData);
+        const response = await httpRequest(url, 'POST', formData);
+
+        if (response.error) {
+            showToast({ title: 'Error', message: response.message, type: 'error', duration: 20000 });
+            return;
+        }
+        console.log(response);
+        showToast({ title: 'Registro exitoso', message: 'Bienvenido a Memorias de Boconó', type: 'success', duration: 20000 });
+        // window.location.href = '/auth';
     }
-}
+};
+
+const formLogin = document.getElementById('formLogin');
+const formRegister = document.getElementById('formRegister');
+
+
+formLogin.addEventListener('submit', (e) => submitForm(e, '/api/login'));
+formRegister.addEventListener('submit', (e) => submitForm(e, '/api/register'));
+
+formLogin.querySelector('input[name="username"]').addEventListener('input', Format.formatInput);
+formLogin.querySelector('input[name="password"]').addEventListener('input', Format.formatInput);
+
+formRegister.querySelector('input[name="name"]').addEventListener('input', Format.formatInput);
+formRegister.querySelector('input[name="lastname"]').addEventListener('input', Format.formatInput);
+formRegister.querySelector('input[name="username"]').addEventListener('input', Format.formatInput);
+formRegister.querySelector('input[name="password"]').addEventListener('input', Format.formatInput);
+
+
+formLogin.querySelector('input[name="username"]').addEventListener('blur', Format.formatInput);
+formLogin.querySelector('input[name="password"]').addEventListener('blur', Format.formatInput);
+
+formRegister.querySelector('input[name="name"]').addEventListener('blur', Format.formatInput);
+formRegister.querySelector('input[name="lastname"]').addEventListener('blur', Format.formatInput);
+formRegister.querySelector('input[name="username"]').addEventListener('blur', Format.formatInput);
+formRegister.querySelector('input[name="password"]').addEventListener('blur', Format.formatInput);
