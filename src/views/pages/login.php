@@ -6,12 +6,11 @@
             <div class="my-10 mx-3 flex items-start min-h-[240px] flex-col justify-between  text-white duration-300 max-w-[294px] w-full "
                 :class=" show? 'opacity-0 ' :'' "
                 x-cloak>
-                <h3 class="text-5xl font-sketchup ">
+                <h3 class="text-5xl font-londrina-sketch ">
                     Ya tienes una cuenta?
                 </h3>
                 <p class="text-paragraph font-normal">
-                    Inicia sesión para poder acceder y realizar
-                    tus solicitudes
+                    Inicia sesión para que puedas disfrutar de todo nuestro contenido
                 </p>
                 <button
                     @click="show = true"
@@ -22,7 +21,7 @@
             <div class="my-10 mx-3 flex items-start min-h-[240px] flex-col justify-between  text-white duration-300 max-w-[294px] w-full "
                 :class=" !show? 'opacity-0 ' :'' "
                 x-cloak>
-                <h3 class="text-5xl font-sketchup ">
+                <h3 class="text-5xl font-londrina-sketch ">
                     Aun no tienes cuenta?
                 </h3>
                 <p class="text-paragraph font-normal">
@@ -44,7 +43,7 @@
             <div class="rounded-md max-w-[420px] py-[30px] duration-300 ease w-full bg-white max-sm:w-min min-h-[430px] items-center flex p-6"
                 :class="show ? 'hidden' : ''">
                 <form id="formRegister" class="space-y-8 w-full">
-                    <h3 class="text-5xl font-sketchup w-full text-text-primary text-center">
+                    <h3 class="text-5xl font-londrina-sketch w-full text-text-primary text-center">
                         Registrarse
                     </h3>
                     <div class="space-y-4">
@@ -95,8 +94,8 @@
             <div class="rounded-md max-w-[420px] py-[30px] duration-300 ease w-full bg-white max-sm:w-min min-h-[400px] items-center flex p-6"
                 :class="!show ? 'hidden' : ''">
                 <form id="formLogin" class="space-y-8 w-full">
-                    <h3 class="text-5xl font-sketchup w-full text-text-primary text-center">
-                        Iniciar Seción
+                    <h3 class="text-5xl font-londrina-sketch w-full text-text-primary text-center">
+                        Iniciar Sesión
                     </h3>
                     <div class="space-y-5">
                         <label class="relative flex flex-col w-full">

@@ -10,6 +10,6 @@ $capsule->schema()->create('users', function ($table) {
     $table->string('lastname');
     $table->string('username')->unique();
     $table->string('password');
-    $table->unsignedInteger('role_id');
+    $table->uuid('role_id');
     $table->timestamps();
 });

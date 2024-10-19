@@ -6,7 +6,7 @@ Flight::route('/', function () {
 
 Flight::route('/auth/', function () {
     if (isset($_SESSION['user'])) {
-        Flight::redirect('/casagro_new');
+        Flight::redirect('/');
     }
     renderWithLayout('login', ['title' => 'Ingresar']);
 });

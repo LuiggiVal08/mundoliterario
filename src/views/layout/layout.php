@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="<?php echo $_ENV['PATH_BASE'] ?>/css/tailwind.css">
     <link rel="stylesheet" href="<?php echo $_ENV['PATH_BASE'] ?>/css/variables.css">
     <link rel="stylesheet" href="<?php echo $_ENV['PATH_BASE'] ?>/fonts/Montserrat/Montserrat.css" />
+    <link rel="stylesheet" href="<?php echo $_ENV['PATH_BASE'] ?>/fonts/sketchup/fonts.css" />
     <link rel="stylesheet" href="<?php echo $_ENV['PATH_BASE'] ?>/fonts/google-icons/index.css" />
     <title><?php echo isset($title) ? $title . ' | ' . $_ENV['TITLE_APP'] : $_ENV['TITLE_APP']; ?></title>
     <script src="<?php echo $_ENV['PATH_BASE'] ?>/js/libraries/alpinejs.min.js" defer></script>

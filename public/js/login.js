@@ -17,9 +17,8 @@ export const submitForm = async (e, url) => {
             showToast({ title: 'Error', message: response.message, type: 'error', duration: 20000 });
             return;
         }
-        console.log(response);
-        showToast({ title: 'Registro exitoso', message: 'Bienvenido a Memorias de Boconó', type: 'success', duration: 20000 });
-        // window.location.href = '/auth';
+        showToast({ title: 'Registro exitoso', message: 'Bienvenido a Mundo Literario', type: 'success', duration: 20000 });
+        window.location.href = '/auth';
     }
 };
 

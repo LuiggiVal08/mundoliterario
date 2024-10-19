@@ -19,7 +19,6 @@ class AuthController
     {
         $payload = [
             'sub' => $user->id,
-            'email' => $user->email,
             'role' => $user->role->name,
             'iat' => time(),
             'exp' => time() + (60 * 60) // Expira en 1 hora
@@ -46,7 +45,6 @@ class AuthController
             // Guardar en sesión
             $_SESSION['user'] = [
                 'id' => $user->id,
-                'email' => $user->email,
                 'role' => $user->role->name,
                 'token' => $token
             ];
@@ -68,13 +66,10 @@ class AuthController
                 $role->name = 'user';
                 $role->save();
             }
-            $usernameFound = User::where('username', $data['username']);
-
-            if (!$usernameFound) {
-                return responseController('Nombre de usuario existente', null, 201);
+            $usernameFound = User::where('username', $data['username'])->first();
+            if ($usernameFound) {
+                return responseController('Nombre de usuario existente' . $usernameFound['username'], null, 404);
             }
-
-
             $password = $data['password'];
             // Crear nuevo usuario
             $data['id'] = (string) Str::uuid();
@@ -85,13 +80,7 @@ class AuthController
             if (!$user) {
                 return responseController('Error creando usuario', null, 404);
             }
-            $token = $this->generateJWT($user);
-
-            $_SESSION['user'] = [
-                'id' => $user->id,
-                'role' => $user->role->name,
-                'token' => $token
-            ];
+            // return responseController(null, $user, 200);
             return $this->login([
                 'username' => $user['username'],
                 'password' => $password
